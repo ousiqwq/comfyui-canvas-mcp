@@ -8,12 +8,16 @@ from server import PromptServer
 
 clients = {}
 requests = OrderedDict()
+started_at = time.monotonic()
 routes = PromptServer.instance.routes
 
 
 @routes.get("/canvas-mcp/status")
 async def status(request):
-    return web.json_response({"version": "0.1.0", "clients": [
+    return web.json_response({"version": "0.1.1",
+        "uptime_seconds": round(time.monotonic() - started_at, 1),
+        "pending_requests": sum(not item["future"].done() for item in requests.values()),
+        "clients": [
         {"client_id": key, **value["info"], "age_seconds": round(time.monotonic() - value["seen"], 1)}
         for key, value in clients.items()
     ]})

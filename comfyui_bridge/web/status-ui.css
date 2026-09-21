@@ -1,0 +1,77 @@
+.canvas-mcp-status-link {
+  position: fixed;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  margin: 0;
+  height: 13px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: #888;
+  font: 10px/13px Arial, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.canvas-mcp-status-link[hidden] { display: none; }
+.canvas-mcp-status-link:hover { color: var(--fg-color, #ddd); text-decoration: underline; }
+.canvas-mcp-status-link:focus-visible { outline: 1px solid var(--fg-color, #aaa); outline-offset: 3px; }
+.canvas-mcp-dot { font-size: 7px; color: #b39362; }
+.canvas-mcp-status-link[data-state="connected"] .canvas-mcp-dot { color: #84a78b; }
+.canvas-mcp-dialog {
+  --mcp-muted: var(--descrip-text, #999);
+  box-sizing: border-box;
+  width: min(700px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-color, #454545);
+  border-radius: 10px;
+  background: var(--comfy-menu-bg, #242424);
+  color: var(--fg-color, #ddd);
+  font: 13px/1.6 Arial, sans-serif;
+  box-shadow: 0 18px 60px #0008;
+}
+.canvas-mcp-dialog[open] { display: flex; flex-direction: column; }
+.canvas-mcp-dialog::backdrop { background: #0006; }
+.canvas-mcp-dialog * { box-sizing: border-box; }
+.canvas-mcp-dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 18px 22px 14px; border-bottom: 1px solid var(--border-color, #454545); }
+.canvas-mcp-dialog h2 { margin: 0; font-size: 19px; font-weight: 600; }
+.canvas-mcp-dialog p { margin: 5px 0 0; }
+.canvas-mcp-dialog h3 { margin: 0 0 10px; font-size: 13px; font-weight: 600; }
+.canvas-mcp-dialog-body { min-height: 0; overflow: auto; padding: 18px 22px; }
+.canvas-mcp-muted { color: var(--mcp-muted); font-size: 12px; }
+.canvas-mcp-connection { padding: 12px 14px; background: var(--comfy-input-bg, #303030); border-left: 3px solid #b39362; border-radius: 4px; }
+.canvas-mcp-connection[data-state="connected"] { border-left-color: #84a78b; }
+.canvas-mcp-section { margin-top: 20px; }
+.canvas-mcp-fields { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 7px 16px; margin: 0; }
+.canvas-mcp-fields dt { color: var(--mcp-muted); }
+.canvas-mcp-fields dd { margin: 0; overflow-wrap: anywhere; }
+.canvas-mcp-dialog code { font: 11px/1.6 monospace; overflow-wrap: anywhere; }
+.canvas-mcp-peers, .canvas-mcp-history { padding: 0; margin: 0; list-style: none; }
+.canvas-mcp-peers li { display: flex; gap: 4px 12px; flex-wrap: wrap; padding: 8px 0; border-bottom: 1px solid var(--border-color, #454545); }
+.canvas-mcp-peers code { width: 100%; color: var(--mcp-muted); }
+.canvas-mcp-history li { display: grid; grid-template-columns: 75px minmax(0,1fr) 38px 72px; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border-color, #454545); }
+.canvas-mcp-history li:only-child.canvas-mcp-muted { display: block; }
+.canvas-mcp-ok { color: #84a78b; }
+.canvas-mcp-error, .canvas-mcp-request-error { color: #df9696; }
+.canvas-mcp-request-error { grid-column: 1 / -1; overflow-wrap: anywhere; font-size: 12px; }
+.canvas-mcp-dialog summary { cursor: pointer; font-weight: 600; }
+.canvas-mcp-dialog-footer { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 12px 22px; border-top: 1px solid var(--border-color, #454545); }
+.canvas-mcp-feedback { flex: 1; min-width: 40px; color: var(--mcp-muted); font-size: 12px; }
+.canvas-mcp-button, .canvas-mcp-icon-button { border: 1px solid var(--border-color, #454545); border-radius: 5px; background: var(--comfy-input-bg, #303030); color: inherit; font: inherit; padding: 5px 10px; cursor: pointer; }
+.canvas-mcp-icon-button { border: 0; background: transparent; font-size: 23px; line-height: 1; padding: 3px 5px; }
+.canvas-mcp-button:hover, .canvas-mcp-icon-button:hover { background: var(--comfy-menu-secondary-bg, #383838); }
+.canvas-mcp-button:focus-visible, .canvas-mcp-icon-button:focus-visible { outline: 1px solid var(--fg-color, #ddd); outline-offset: 2px; }
+.canvas-mcp-button:disabled { opacity: .55; cursor: wait; }
+.canvas-mcp-copy-fallback { width: 100%; min-height: 100px; margin-top: 16px; padding: 8px; background: var(--comfy-input-bg, #303030); color: inherit; font: 11px monospace; }
+@media (max-width: 480px) {
+  .canvas-mcp-dialog-header, .canvas-mcp-dialog-body { padding: 14px; }
+  .canvas-mcp-dialog-footer { padding: 10px 14px; }
+  .canvas-mcp-fields { grid-template-columns: 105px minmax(0, 1fr); gap: 7px 10px; }
+  .canvas-mcp-feedback { flex-basis: 100%; }
+}
