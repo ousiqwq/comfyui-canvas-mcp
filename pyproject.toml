@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comfyui-canvas-mcp"
+version = "0.1.0"
+description = "Live ComfyUI canvas tools alongside the official Comfy MCP, without a second agent."
+requires-python = ">=3.11"
+license = "AGPL-3.0-or-later"
+authors = [{name = "ousiqwq"}]
+dependencies = ["comfy-mcp==0.10.0", "Pillow>=10", "PyYAML>=6"]
+
+[project.scripts]
+comfy-mcp-local = "comfy_canvas.main:main"
+comfy-canvas-restore = "comfy_canvas.snapshots:restore_cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
